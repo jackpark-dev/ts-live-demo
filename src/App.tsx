@@ -18,14 +18,14 @@ function Dialog({
   header,
   children,
 }: {
-  header?: () => React.ReactNode;
+  header?: React.ReactNode | (() => React.ReactNode);
   children: React.ReactNode;
 }) {
   return (
     <div>
       {header && (
         <div>
-          <strong>{header?.()} </strong>
+          <strong>{typeof header === 'function' ? header?.() : header} </strong>
         </div>
       )}
       {children}
@@ -43,6 +43,10 @@ function App() {
       <HeadingWithElement title="Plain Text"></HeadingWithElement>
 
       <Dialog header={() => <span>This is the header</span>}>
+        This would be the content
+      </Dialog>
+
+      <Dialog header={<span>This is the header</span>}>
         This would be the content
       </Dialog>
     </div>
