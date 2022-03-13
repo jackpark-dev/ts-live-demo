@@ -14,6 +14,25 @@ function HeadingWithElement({ title }: { title: React.ReactNode }) {
   return <h1>{title}</h1>;
 }
 
+function Dialog({
+  header,
+  children,
+}: {
+  header?: () => React.ReactNode;
+  children: React.ReactNode;
+}) {
+  return (
+    <div>
+      {header && (
+        <div>
+          <strong>{header?.()} </strong>
+        </div>
+      )}
+      {children}
+    </div>
+  );
+}
+
 function App() {
   return (
     <div className="App">
@@ -22,6 +41,10 @@ function App() {
         title={<div>Something elementy</div>}
       ></HeadingWithElement>
       <HeadingWithElement title="Plain Text"></HeadingWithElement>
+
+      <Dialog header={() => <span>This is the header</span>}>
+        This would be the content
+      </Dialog>
     </div>
   );
 }
