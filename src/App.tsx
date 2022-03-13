@@ -10,7 +10,7 @@ import './App.css';
 function Heading({ title }: { title: string }) {
   return <h1>{title}</h1>;
 }
-function HeadingWithElement({ title }: { title: React.ReactElement }) {
+function HeadingWithElement({ title }: { title: React.ReactNode }) {
   return <h1>{title}</h1>;
 }
 
@@ -21,6 +21,7 @@ function App() {
       <HeadingWithElement
         title={<div>Something elementy</div>}
       ></HeadingWithElement>
+      <HeadingWithElement title="Plain Text"></HeadingWithElement>
     </div>
   );
 }
